@@ -1,4 +1,4 @@
-DBI/Wrapper version 0.01
+DBI::Wrapper version 0.01
 ========================
 
 DBI::Wrapper is a simple module that provides a high-level interface
@@ -10,8 +10,8 @@ an array-ref of hash-refs), and for executing a non-select statement
 The intention here is that your application will have much cleaner code, so instead of writing:
 
     my $sql = "SELECT name,address FROM $table WHERE zipcode=?";
-    my $sth = $dbh->prepare("SELECT name,address FROM $table WHERE zipcode=?");
-    my $rv  = $sth->execute("$zipcode");
+    my $sth = $dbh->prepare($sql);
+    my $rv  = $sth->execute($zipcode);
     my @found_rows;
     while ( my $hash_ref = $sth->fetchrow_hashref ) {
         push( @found_rows, $hash_ref );
@@ -20,7 +20,7 @@ The intention here is that your application will have much cleaner code, so inst
 You would write:
 
     my $sql = "SELECT name,address FROM $table WHERE zipcode=?";
-    my $found_rows = $wrapper->FetchAll("$sql","$zipcode");
+    my $found_rows = $wrapper->FetchAll($sql,$zipcode);
     # $found_rows is an array_ref of hash_refs
 
 
