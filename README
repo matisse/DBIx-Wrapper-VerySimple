@@ -1,0 +1,52 @@
+DBI/Wrapper version 0.01
+========================
+
+DBI::Wrapper is a simple module that provides a high-level interface
+to the Perl DBI module. The provided methods are for fetching
+a single record (returns a hash-ref), many records (returns
+an array-ref of hash-refs), and for executing a non-select statement
+(returns a result code).
+
+The intention here is that your application will have much cleaner code, so instead of writing:
+
+    my $sql = "SELECT name,address FROM $table WHERE zipcode=?";
+    my $sth = $dbh->prepare("SELECT name,address FROM $table WHERE zipcode=?");
+    my $rv  = $sth->execute("$zipcode");
+    my @found_rows;
+    while ( my $hash_ref = $sth->fetchrow_hashref ) {
+        push( @found_rows, $hash_ref );
+    }
+
+You would write:
+
+    my $sql = "SELECT name,address FROM $table WHERE zipcode=?";
+    my $found_rows = $wrapper->FetchAll("$sql","$zipcode");
+    # $found_rows is an array_ref of hash_refs
+
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module requires these other modules and libraries:
+
+  DBI
+
+COPYRIGHT AND LICENCE
+
+
+Copyright (c)2001 by Matisse Enzer <matisse@matisse.net>
+
+This package is free software and is provided "as is"
+without express or implied warranty.  It may be used,
+redistributed and/or modified under the terms of the Perl
+Artistic License (see http://www.perl.com/perl/misc/Artistic.html)
+
+
