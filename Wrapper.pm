@@ -1,4 +1,4 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/Attic/Wrapper.pm,v 1.3 2003/10/01 19:58:30 matisse Exp $
+# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/Attic/Wrapper.pm,v 1.4 2003/10/01 20:07:54 matisse Exp $
 #
 #
 ###############################################################################
@@ -57,7 +57,7 @@ $dsn is a B<DBI> DSN, for example:
 
 	my $dsn = "DBI:mysql:database='Accounting'";
 
-or a more complex exmaple:
+or a more complex example:
 
 	my $database = 'Accounting';
 	my $host     = 'data.ourdomain.com';  # Default is usually 'localhost'
