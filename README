@@ -1,5 +1,5 @@
-DBI::Wrapper version 0.01
-========================
+DBI::Wrapper version 0.02
+=========================
 
 DBI::Wrapper is a simple module that provides a high-level interface
 to the Perl DBI module. The provided methods are for fetching
@@ -38,7 +38,7 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  DBI
+  DBI  (prefer vesrion 1.34 or later)
 
 COPYRIGHT AND LICENCE
 
