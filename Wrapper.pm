@@ -1,4 +1,4 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/Attic/Wrapper.pm,v 1.4 2003/10/01 20:07:54 matisse Exp $
+# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/Attic/Wrapper.pm,v 1.5 2005/01/18 01:29:28 matisse Exp $
 #
 #
 ###############################################################################
@@ -8,7 +8,7 @@ use 5.006;
 use strict;
 use DBI;
 use Carp qw(cluck confess);
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 =head1 NAME
@@ -74,7 +74,7 @@ Returns a hash-ref for one row.
 
 sub FetchHash {
     my( $self, $sql, @bind_values ) = @_;
-    my $sth = $self->{'dbh'}->prepare_cached($sql) or confess("SQL: {$sql}", $self->{'dbh'}->errstr);
+    my $sth = $self->{'dbh'}->prepare_cached($sql) or confess($self->{'dbh'}->errstr, "SQL: {$sql}");
     $sth->execute(@bind_values) or confess("SQL: {$sql}");
     my $row = $sth->fetchrow_hashref;
     $sth->finish;
@@ -93,7 +93,7 @@ Returns an array-ref of hash-refs. @bind_values are optional.
 sub FetchAll {
     my( $self, $sql, @bind_values ) = @_;
     my @rows;
-    my $sth = $self->{'dbh'}->prepare_cached($sql) or confess("SQL: {$sql}");
+    my $sth = $self->{'dbh'}->prepare_cached($sql) or confess($self->{'dbh'}->errstr, "SQL: {$sql}");
     $sth->execute(@bind_values) or confess( "SQL: {$sql}");
     while ( my $row = $sth->fetchrow_hashref ) {
         push( @rows, $row );
@@ -112,8 +112,8 @@ Executes a non-select SQL statement
 
 sub Do {
     my( $self, $sql, @bind_values ) = @_;
-    my $sth = $self->{'dbh'}->prepare_cached($sql) or confess("SQL: {$sql}");
-    my $result_code = $sth->execute(@bind_values) or confess( "SQL: {$sql}" );
+    my $sth = $self->{'dbh'}->prepare_cached($sql) or confess($self->{'dbh'}->errstr, "SQL: {$sql}");
+    my $result_code = $sth->execute(@bind_values) or confess($self->{'dbh'}->errstr, "SQL: {$sql}");
     $sth->finish;
     return $result_code;
 }
@@ -121,7 +121,7 @@ sub Do {
 sub DESTROY {
     my($self) = @_;
     # warn ref $self, " executing DESTROY method. Disconnecting from database";
-    $self->{'dbh'}->disconnect;
+    $self->{'dbh'}->disconnect if $self->{'dbh'};
 }
 
 ###########################################################################
