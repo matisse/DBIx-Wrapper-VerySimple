@@ -7,7 +7,8 @@ a single record (returns a hash-ref), many records (returns
 an array-ref of hash-refs), and for executing a non-select statement
 (returns a result code).
 
-The intention here is that your application will have much cleaner code, so instead of writing:
+The intention here is that your application will have much cleaner code,
+so instead of writing:
 
     my $sql = "SELECT name,address FROM $table WHERE zipcode=?";
     my $sth = $dbh->prepare($sql);

@@ -1,5 +1,10 @@
 Revision history for Perl extension DBI::Wrapper.
 
+0.02  Wed Oct  1 12:57:08 PDT 2003
+	- Require DBI 1.34 or later
+	- Use  prepare_cached   instead of prepare
+	- Improved perldoc
+
 0.01  Sun Nov  4 09:29:15 2001
 	- original version; created by h2xs 1.21 with options
 		-X DBI::Wrapper

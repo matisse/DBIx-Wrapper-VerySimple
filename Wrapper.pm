@@ -1,4 +1,4 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/Attic/Wrapper.pm,v 1.2 2003/10/01 19:42:20 matisse Exp $
+# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/Attic/Wrapper.pm,v 1.3 2003/10/01 19:58:30 matisse Exp $
 #
 #
 ###############################################################################
@@ -8,12 +8,12 @@ use 5.006;
 use strict;
 use DBI;
 use Carp qw(cluck confess);
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 =head1 NAME
 
-DBI::Wrapper
+package - DBI::Wrapper
 
 =head1 SYNOPSIS
 
