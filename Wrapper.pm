@@ -1,4 +1,4 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/Attic/Wrapper.pm,v 1.1 2001/11/04 17:57:33 matisse Exp $
+# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/Attic/Wrapper.pm,v 1.2 2003/10/01 19:42:20 matisse Exp $
 #
 #
 ###############################################################################
@@ -45,9 +45,24 @@ sub new {
 }
 
 
-=head1 Per-Method Documenattion
+=head1 Per-Method Documentation
 
 These are the public methods provided.
+
+=head2 new
+
+	my $db = DBI::Wrapper->new($dsn,$user,password);
+
+$dsn is a B<DBI> DSN, for example:
+
+	my $dsn = "DBI:mysql:database='Accounting'";
+
+or a more complex exmaple:
+
+	my $database = 'Accounting';
+	my $host     = 'data.ourdomain.com';  # Default is usually 'localhost'
+	my $port     = '4200';  # 3306 is the MySQl default
+	my $dsn = "DBI:mysql:database=$database;host=$hostname;port=$port";
 
 =head2 FetchHash
 
@@ -59,7 +74,7 @@ Returns a hash-ref for one row.
 
 sub FetchHash {
     my( $self, $sql, @bind_values ) = @_;
-    my $sth = $self->{'dbh'}->prepare($sql) or confess("SQL: {$sql}", $self->{'dbh'}->errstr);
+    my $sth = $self->{'dbh'}->prepare_cached($sql) or confess("SQL: {$sql}", $self->{'dbh'}->errstr);
     $sth->execute(@bind_values) or confess("SQL: {$sql}");
     my $row = $sth->fetchrow_hashref;
     $sth->finish;
@@ -78,7 +93,7 @@ Returns an array-ref of hash-refs. @bind_values are optional.
 sub FetchAll {
     my( $self, $sql, @bind_values ) = @_;
     my @rows;
-    my $sth = $self->{'dbh'}->prepare($sql) or confess("SQL: {$sql}");
+    my $sth = $self->{'dbh'}->prepare_cached($sql) or confess("SQL: {$sql}");
     $sth->execute(@bind_values) or confess( "SQL: {$sql}");
     while ( my $row = $sth->fetchrow_hashref ) {
         push( @rows, $row );
@@ -97,7 +112,7 @@ Executes a non-select SQL statement
 
 sub Do {
     my( $self, $sql, @bind_values ) = @_;
-    my $sth = $self->{'dbh'}->prepare($sql) or confess("SQL: {$sql}");
+    my $sth = $self->{'dbh'}->prepare_cached($sql) or confess("SQL: {$sql}");
     my $result_code = $sth->execute(@bind_values) or confess( "SQL: {$sql}" );
     $sth->finish;
     return $result_code;
