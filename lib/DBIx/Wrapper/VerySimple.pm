@@ -1,8 +1,8 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v 1.2 2006/08/20 20:16:06 matisse Exp $
-# $Revision: 1.2 $
+# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v 1.3 2006/08/20 20:28:27 matisse Exp $
+# $Revision: 1.3 $
 # $Author: matisse $
 # $Source: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v $
-# $Date: 2006/08/20 20:16:06 $
+# $Date: 2006/08/20 20:28:27 $
 ###############################################################################
 
 package DBI::Wrapper;
@@ -94,7 +94,7 @@ DBI::Wrapper - Simplify use of DBI
 
 =head1 VERSION
 
-$Revision: 1.2 $
+0.04
 
 =head1 SYNOPSIS
 
