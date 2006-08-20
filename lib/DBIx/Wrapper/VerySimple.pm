@@ -1,8 +1,8 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v 1.1 2006/08/20 19:52:52 matisse Exp $
-# $Revision: 1.1 $
+# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v 1.2 2006/08/20 20:16:06 matisse Exp $
+# $Revision: 1.2 $
 # $Author: matisse $
 # $Source: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v $
-# $Date: 2006/08/20 19:52:52 $
+# $Date: 2006/08/20 20:16:06 $
 ###############################################################################
 
 package DBI::Wrapper;
@@ -13,20 +13,19 @@ use Carp qw(cluck confess);
 our $VERSION = '0.04';
 
 # private instance variables
-my %DB_HANDLES = ();    
+my %DB_HANDLES = ();
 my %ARGS       = ();
 
 sub new {
-	my $class = shift;
-	my $self  = {};
-	bless $self, $class;
-	$ARGS{$self} = \@_;    # So we can use them to reconnect if needed
-	$DB_HANDLES{$self} = DBI->connect(@_)
-	  || confess("Could not connect using DSN: '@_'");
+    my $class = shift;
+    my $self  = {};
+    bless $self, $class;
+    $ARGS{$self} = \@_;    # So we can use them to reconnect if needed
+    $DB_HANDLES{$self} = DBI->connect(@_)
+      || confess("Could not connect using DSN: '@_'");
 
-	return $self;
+    return $self;
 }
-
 
 sub dbh {
     my ($self) = @_;
@@ -34,50 +33,54 @@ sub dbh {
 }
 
 sub get_args {
-    my ( $self ) = @_;
+    my ($self) = @_;
     return $ARGS{$self};
 }
 
-sub FetchHash { ## no critic ProhibitMixedCaseVars
-	my ( $self, $sql, @bind_values ) = @_;
-	my $sth = $DB_HANDLES{$self}->prepare_cached($sql)
-	  or confess( $DB_HANDLES{$self}->errstr, "SQL: {$sql}" );
-	$sth->execute(@bind_values) or confess("SQL: {$sql}");
-	my $row = $sth->fetchrow_hashref;
-	$sth->finish;
-	return $row;
+sub FetchHash {    ## no critic ProhibitMixedCaseVars
+    my ( $self, $sql, @bind_values ) = @_;
+    my $sth = $DB_HANDLES{$self}->prepare_cached($sql)
+      or confess( $DB_HANDLES{$self}->errstr, "SQL: {$sql}" );
+    $sth->execute(@bind_values) or confess("SQL: {$sql}");
+    my $row = $sth->fetchrow_hashref;
+    $sth->finish;
+    return $row;
 }
 
-
-
-sub FetchAll { ## no critic ProhibitMixedCaseVars
-	my ( $self, $sql, @bind_values ) = @_;
-	my @rows;
-	my $sth = $DB_HANDLES{$self}->prepare_cached($sql)
-	  or confess( $DB_HANDLES{$self}->errstr, "SQL: {$sql}" );
-	$sth->execute(@bind_values) or confess("SQL: {$sql}");
-	while ( my $row = $sth->fetchrow_hashref ) {
-		push @rows, $row;
-	}
-	$sth->finish;
-	return \@rows;
+sub FetchAll {    ## no critic ProhibitMixedCaseVars
+    my ( $self, $sql, @bind_values ) = @_;
+    my @rows;
+    my $sth = $DB_HANDLES{$self}->prepare_cached($sql)
+      or confess( $DB_HANDLES{$self}->errstr, "SQL: {$sql}" );
+    $sth->execute(@bind_values) or confess("SQL: {$sql}");
+    while ( my $row = $sth->fetchrow_hashref ) {
+        push @rows, $row;
+    }
+    $sth->finish;
+    return \@rows;
 }
 
-sub Do { ## no critic ProhibitMixedCaseVars
-	my ( $self, $sql, @bind_values ) = @_;
-	my $sth = $DB_HANDLES{$self}->prepare_cached($sql)
-	  or confess( $DB_HANDLES{$self}->errstr, "SQL: {$sql}" );
-	my $result_code = $sth->execute(@bind_values)
-	  or confess( $DB_HANDLES{$self}->errstr, "SQL: {$sql}" );
-	$sth->finish;
-	return $result_code;
+{
+    no warnings qw(once);
+    *fetch_hash = \&FetchHash;
+    *fetch_all  = \&FetchAll;
+}    
+
+sub Do {    ## no critic ProhibitMixedCaseVars
+    my ( $self, $sql, @bind_values ) = @_;
+    my $sth = $DB_HANDLES{$self}->prepare_cached($sql)
+      or confess( $DB_HANDLES{$self}->errstr, "SQL: {$sql}" );
+    my $result_code = $sth->execute(@bind_values)
+      or confess( $DB_HANDLES{$self}->errstr, "SQL: {$sql}" );
+    $sth->finish;
+    return $result_code;
 }
 
 sub DESTROY {
-	my ($self) = @_;
+    my ($self) = @_;
 
-	# warn ref $self, " executing DESTROY method. Disconnecting from database";
-	return $DB_HANDLES{$self}->disconnect if $DB_HANDLES{$self};
+    # warn ref $self, " executing DESTROY method. Disconnecting from database";
+    return $DB_HANDLES{$self}->disconnect if $DB_HANDLES{$self};
 }
 
 ###########################################################################
@@ -87,7 +90,11 @@ __END__
 
 =head1 NAME
 
-package - DBI::Wrapper
+DBI::Wrapper - Simplify use of DBI
+
+=head1 VERSION
+
+$Revision: 1.2 $
 
 =head1 SYNOPSIS
 
@@ -130,28 +137,34 @@ or a more complex example:
 
 =head2 FetchHash or fetch_hash
 
-	my $hashref = FetchHash( $sql, @bind_values );
+  $hashref = $db->FetchHash( $sql, @bind_values );
 
-Returns a hash-ref for one row.
+Returns a HASH ref for one row.
+Throws an exception if execution fails.
 
 =head2 FetchAll or fetch_all
 
-    my $arrayref = FetchAll( $sql, @bind_values );
+  $arrayref = $db->FetchAll( $sql, @bind_values );
 
 Returns an array-ref of hash-refs. @bind_values are optional.
-
+Throws an exception if execution fails.
 
 =head2 Do
 
     my $result_code = Do( $sql, @bind_values );
 
 Executes a non-select SQL statement
+Throws an exception if execution fails.
 
 =head2 dbh
 
-returns the raw database handle from L<DBI>.
+  $db->dbh();
+
+Returns the raw database handle from L<DBI>.
 
 =head2 get_args
+
+  $db->get-args();
 
 Returns an ARRAY ref of the original args to new();
 

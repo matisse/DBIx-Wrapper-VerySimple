@@ -1,15 +1,15 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/t/00_basic.t,v 1.1 2006/08/20 19:52:52 matisse Exp $
-# $Revision: 1.1 $
+# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/t/00_basic.t,v 1.2 2006/08/20 20:16:49 matisse Exp $
+# $Revision: 1.2 $
 # $Author: matisse $
 # $Source: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/t/00_basic.t,v $
-# $Date: 2006/08/20 19:52:52 $
+# $Date: 2006/08/20 20:16:49 $
 ###############################################################################
 
 use strict;
 use warnings;
 use English qw(-no_match_vars);
 use FindBin qw($Bin);
-use Test::More tests => 18;
+use Test::More tests => 20;
 
 # Ensure that DBI::Wrapper loads our mock DBI.pm
 use lib "$Bin/mock_lib";
@@ -32,6 +32,7 @@ test_Do();
 test_FetchAll();
 test_FetchHash();
 test_get_args();
+test_aliases();
 
 exit;
 ###############################################################################
@@ -124,6 +125,13 @@ sub test_get_args {
     );
     return 1;    
 }
+
+sub test_aliases {
+    my $object = set_up();
+    can_ok($object, 'fetch_all');
+    can_ok($object, 'fetch_hash');
+}
+
 sub set_up {
     my $object = DBI::Wrapper->new( $TEST_DSN, $TEST_USER, $TEST_PASSWORD );
     return $object;
