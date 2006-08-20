@@ -2,5 +2,8 @@ Changes
 Makefile.PL
 MANIFEST
 README
-test.pl
-Wrapper.pm
+t/00_basic.t
+t/mock_lib/DBI.pm
+t/mock_lib/DBI/Mock/dbh.pm
+t/mock_lib/DBI/Mock/sth.pm
+lib/DBI/Wrapper.pm
