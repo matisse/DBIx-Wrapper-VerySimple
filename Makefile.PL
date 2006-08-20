@@ -3,7 +3,7 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 WriteMakefile(
     'NAME'		=> 'DBI::Wrapper',
- #   'VERSION_FROM'	=> 'Wrapper.pm', # finds $VERSION
+    'VERSION_FROM'	=> 'lib/DBI/Wrapper.pm', # finds $VERSION
     'PREREQ_PM'		=> { DBI => 1.34, }, # e.g., Module::Name => 1.1
     'ABSTRACT'          => 'Wrapper around DBI providing very simple interface.',
     'AUTHOR'            => 'Matisse Enzer <matisse@matisse.net>',
