@@ -1,8 +1,8 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/t/00_basic.t,v 1.2 2006/08/20 20:16:49 matisse Exp $
-# $Revision: 1.2 $
+# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/t/00_basic.t,v 1.3 2006/11/01 17:15:17 matisse Exp $
+# $Revision: 1.3 $
 # $Author: matisse $
 # $Source: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/t/00_basic.t,v $
-# $Date: 2006/08/20 20:16:49 $
+# $Date: 2006/11/01 17:15:17 $
 ###############################################################################
 
 use strict;
@@ -11,7 +11,7 @@ use English qw(-no_match_vars);
 use FindBin qw($Bin);
 use Test::More tests => 20;
 
-# Ensure that DBI::Wrapper loads our mock DBI.pm
+# Ensure that DBIx::Wrapper::VerySimple loads our mock DBI.pm
 use lib "$Bin/mock_lib";
 use DBI;
 use DBI::Mock::dbh;
@@ -40,13 +40,13 @@ exit;
 
 
 sub test_compile {
-    use_ok('DBI::Wrapper');
+    use_ok('DBIx::Wrapper::VerySimple');
     return 1;
 }
 
 sub test_new {
     my $object = set_up();
-    isa_ok( $object, 'DBI::Wrapper' );
+    isa_ok( $object, 'DBIx::Wrapper::VerySimple' );
     return 1;
 }
 
@@ -133,6 +133,7 @@ sub test_aliases {
 }
 
 sub set_up {
-    my $object = DBI::Wrapper->new( $TEST_DSN, $TEST_USER, $TEST_PASSWORD );
+    my $object
+      = DBIx::Wrapper::VerySimple->new( $TEST_DSN, $TEST_USER, $TEST_PASSWORD );
     return $object;
 }

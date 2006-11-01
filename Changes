@@ -1,4 +1,8 @@
-Revision history for Perl extension DBI::Wrapper.
+Revision history for Perl extension DBIx::Wrapper::VerySimple.
+
+0.04  Wed Nov  1 09:10:22 PST 2006
+    - Changed namespace from DBI::Wrapper to DBIx::Wrapper::VerySimple
+      First CPAN release.
 
 0.04  Sun Aug 20 12:38:43 PDT 2006
     - Added Unit Tests
@@ -14,6 +18,5 @@ Revision history for Perl extension DBI::Wrapper.
 	- Improved perldoc
 
 0.01  Sun Nov  4 09:29:15 2001
-	- original version; created by h2xs 1.21 with options
-		-X DBI::Wrapper
+	- original version; created by h2xs 1.21
 

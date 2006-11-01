@@ -1,8 +1,8 @@
-DBI::Wrapper - Simplify use of DBI
-==================================
+DBIx::Wrapper::VerySimple - Simplify use of DBI
+===============================================
 
-DBI::Wrapper is a simple module that provides a high-level interface
-to the Perl DBI module. The provided methods are for fetching
+DBIx::Wrapper::VerySimple is a simple module that provides a high-level
+interface to the Perl DBI module. The provided methods are for fetching
 a single record (returns a hash-ref), many records (returns
 an array-ref of hash-refs), and for executing a non-select statement
 (returns a result code).

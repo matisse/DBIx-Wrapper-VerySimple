@@ -1,16 +1,16 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v 1.3 2006/08/20 20:28:27 matisse Exp $
-# $Revision: 1.3 $
+# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v 1.4 2006/11/01 17:15:17 matisse Exp $
+# $Revision: 1.4 $
 # $Author: matisse $
 # $Source: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v $
-# $Date: 2006/08/20 20:28:27 $
+# $Date: 2006/11/01 17:15:17 $
 ###############################################################################
 
-package DBI::Wrapper;
+package DBIx::Wrapper::VerySimple;
 use DBI;
 use strict;
 use warnings;
 use Carp qw(cluck confess);
-our $VERSION = '0.04';
+our $VERSION = 0.05;
 
 # private instance variables
 my %DB_HANDLES = ();
@@ -90,7 +90,7 @@ __END__
 
 =head1 NAME
 
-DBI::Wrapper - Simplify use of DBI
+DBIx::Wrapper::VerySimple - Simplify use of DBI
 
 =head1 VERSION
 
@@ -98,8 +98,8 @@ DBI::Wrapper - Simplify use of DBI
 
 =head1 SYNOPSIS
 
-  use DBI::Wrapper;
-  $db = DBI::Wrapper->new( $dsn, @other_args ); 
+  use DBIx::Wrapper::VerySimple;
+  $db = DBIx::Wrapper::VerySimple->new( $dsn, @other_args ); 
   $hashref = $db->FetchHash($sql, @bind_values);
   $arrayref = $db->FetchAll($sql, @bind_values);
   $rv       = $db->Do($sql, @bind_values);
@@ -122,7 +122,7 @@ These are the public methods provided.
 
 =head2 new
 
-	my $db = DBI::Wrapper->new($dsn,$user,password);
+	my $db = DBIx::Wrapper::VerySimple->new($dsn,$user,password);
 
 $dsn is a B<DBI> DSN, for example:
 

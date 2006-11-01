@@ -1,8 +1,8 @@
 # http://module-build.sourceforge.net/META-spec.html
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         DBI-Wrapper
-version:      0.04
-version_from: lib/DBI/Wrapper.pm
+name:         DBIx-Wrapper-VerySimple
+version:      0.05
+version_from: lib/DBIx/Wrapper/VerySimple.pm
 installdirs:  site
 requires:
     DBI:                           1.34
