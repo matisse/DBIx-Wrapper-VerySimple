@@ -1,7 +1,7 @@
 # http://module-build.sourceforge.net/META-spec.html
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
 name:         DBIx-Wrapper-VerySimple
-version:      0.05
+version:      0.051
 version_from: lib/DBIx/Wrapper/VerySimple.pm
 installdirs:  site
 requires:

@@ -1,6 +1,9 @@
 Revision history for Perl extension DBIx::Wrapper::VerySimple.
 
-0.04  Wed Nov  1 09:10:22 PST 2006
+0.051 Wed Nov  1 20:07:47 PST 2006
+    - Fixed some typos and smal improvements to pod.
+
+0.05  Wed Nov  1 09:10:22 PST 2006
     - Changed namespace from DBI::Wrapper to DBIx::Wrapper::VerySimple
       First CPAN release.
 

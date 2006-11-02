@@ -1,16 +1,12 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v 1.4 2006/11/01 17:15:17 matisse Exp $
-# $Revision: 1.4 $
-# $Author: matisse $
-# $Source: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v $
-# $Date: 2006/11/01 17:15:17 $
+# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v 1.5 2006/11/02 04:10:39 matisse Exp $
 ###############################################################################
 
 package DBIx::Wrapper::VerySimple;
-use DBI;
 use strict;
 use warnings;
 use Carp qw(cluck confess);
-our $VERSION = 0.05;
+use DBI;
+our $VERSION = 0.051;
 
 # private instance variables
 my %DB_HANDLES = ();
@@ -94,7 +90,7 @@ DBIx::Wrapper::VerySimple - Simplify use of DBI
 
 =head1 VERSION
 
-0.04
+0.051
 
 =head1 SYNOPSIS
 
@@ -126,32 +122,32 @@ These are the public methods provided.
 
 $dsn is a B<DBI> DSN, for example:
 
-	my $dsn = "DBI:mysql:database='Accounting'";
+	$dsn = q{DBI:mysql:database='Accounting'};
 
 or a more complex example:
 
-	my $database = 'Accounting';
-	my $host     = 'data.ourdomain.com';  # Default is usually 'localhost'
-	my $port     = '4200';  # 3306 is the MySQl default
-	my $dsn = "DBI:mysql:database=$database;host=$hostname;port=$port";
+	$database = 'Accounting';
+	$host     = 'data.ourdomain.com';  # Default is usually 'localhost'
+	$port     = '4200';  # 3306 is the MySQl default
+	$dsn = "DBI:mysql:database=$database;host=$hostname;port=$port";
 
-=head2 FetchHash or fetch_hash
+=head2 fetch_hash or FetchHash
 
-  $hashref = $db->FetchHash( $sql, @bind_values );
+  $hashref = $db->fetch_hash( $sql, @bind_values );
 
 Returns a HASH ref for one row.
 Throws an exception if execution fails.
 
-=head2 FetchAll or fetch_all
+=head2 fetch_all or FetchAll
 
-  $arrayref = $db->FetchAll( $sql, @bind_values );
+  $arrayref = $db->fetch_all( $sql, @bind_values );
 
-Returns an array-ref of hash-refs. @bind_values are optional.
+Returns an ARRAY ref of HASH refs. @bind_values are optional.
 Throws an exception if execution fails.
 
 =head2 Do
 
-    my $result_code = Do( $sql, @bind_values );
+    $result_code = $db->Do( $sql, @bind_values );
 
 Executes a non-select SQL statement
 Throws an exception if execution fails.
@@ -164,13 +160,18 @@ Returns the raw database handle from L<DBI>.
 
 =head2 get_args
 
-  $db->get-args();
+  $db->get_args();
 
 Returns an ARRAY ref of the original args to new();
 
 =head1 SEE ALSO
 
 L<DBI>, L<Apache::DBI>
+
+=head2 Other Wrapper Modules
+
+L<DBIx::Simple>, L<DBIx::Wrapper> - have more features, but are
+not as simple as this module.
 
 =head1 AUTHOR
 
@@ -179,6 +180,8 @@ Matisse Enzer E<lt>matisse@matisse.netE<gt>
 =head1 COPYRIGHT
 
 Copyright (c)2001-2006 by Matisse Enzer
+
+=head1 LICENSE
 
 This package is free software and is provided "as is"
 without express or implied warranty.  It may be used,

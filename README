@@ -3,8 +3,8 @@ DBIx::Wrapper::VerySimple - Simplify use of DBI
 
 DBIx::Wrapper::VerySimple is a simple module that provides a high-level
 interface to the Perl DBI module. The provided methods are for fetching
-a single record (returns a hash-ref), many records (returns
-an array-ref of hash-refs), and for executing a non-select statement
+a single record (returns a hashref), many records (returns
+an arrayref of hashrefs), and for executing a non-select statement
 (returns a result code).
 
 The intention here is that your application will have much cleaner code,
@@ -21,7 +21,7 @@ so instead of writing:
 You would write:
 
     $sql = 'SELECT name,address FROM $table WHERE zipcode=?';
-    $found_rows = $wrapper->FetchAll($sql,$zipcode); # An array_ref of hash_refs
+    $found_rows = $wrapper->fetch_all($sql,$zipcode); # An arrayref of hashrefs
 
 
 INSTALLATION
@@ -37,7 +37,7 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  DBI  (prefer vesrion 1.34 or later)
+  DBI  (prefer version 1.34 or later)
 
 COPYRIGHT AND LICENCE
 
