@@ -4,7 +4,8 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     'NAME'		=> 'DBIx::Wrapper::VerySimple',
     'VERSION_FROM'	=> 'lib/DBIx/Wrapper/VerySimple.pm', # finds $VERSION
-    'PREREQ_PM'		=> { DBI => 1.34, }, # e.g., Module::Name => 1.1
+    'PREREQ_PM'		=> { DBI => 1.34, Carp => 0, }, # e.g., Module::Name => 1.1
     'ABSTRACT'          => 'Wrapper around DBI providing very simple interface.',
     'AUTHOR'            => 'Matisse Enzer <matisse@matisse.net>',
+    'LICENSE'           => 'perl',
 );
