@@ -175,7 +175,7 @@ not as simple as this module.
 
 =head1 AUTHOR
 
-Matisse Enzer E<lt>matisse@matisse.netE<gt>
+Matisse Enzer E<lt>matisse@cpan.orgE<gt>
 
 =head1 COPYRIGHT
 
