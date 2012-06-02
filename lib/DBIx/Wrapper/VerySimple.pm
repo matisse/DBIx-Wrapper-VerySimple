@@ -1,4 +1,3 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/lib/DBIx/Wrapper/VerySimple.pm,v 1.5 2006/11/02 04:10:39 matisse Exp $
 ###############################################################################
 
 package DBIx::Wrapper::VerySimple;

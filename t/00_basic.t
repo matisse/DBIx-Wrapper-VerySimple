@@ -1,8 +1,3 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/t/00_basic.t,v 1.3 2006/11/01 17:15:17 matisse Exp $
-# $Revision: 1.3 $
-# $Author: matisse $
-# $Source: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/t/00_basic.t,v $
-# $Date: 2006/11/01 17:15:17 $
 ###############################################################################
 
 use strict;

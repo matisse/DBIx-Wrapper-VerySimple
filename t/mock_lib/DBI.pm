@@ -1,8 +1,3 @@
-# $Header: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/t/mock_lib/DBI.pm,v 1.1 2006/08/20 19:52:52 matisse Exp $
-# $Revision: 1.1 $
-# $Author: matisse $
-# $Source: /Users/matisse/Desktop/CVS2GIT/matisse.net.cvs/perl-modules/DBIx-Wrapper-VerySimple/t/mock_lib/DBI.pm,v $
-# $Date: 2006/08/20 19:52:52 $
 ###############################################################################
 
 #  Mock class - for testing only
