@@ -2,4 +2,6 @@ blib
 pm_to_blib
 *.gz
 Makefile
-.project
+\.project
+DBIx-WrapperVerySimple*
+*.bak
