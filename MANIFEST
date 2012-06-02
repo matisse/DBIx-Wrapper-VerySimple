@@ -1,11 +1,15 @@
 Changes
-Makefile.PL
+INSTALL
+lib/DBIx/Wrapper/VerySimple.pm
 MANIFEST
+MANIFEST.bak
 MANIFEST.SKIP
+META.yml			Module meta-data (added by MakeMaker)
 README
+Makefile.PL
 t/00_basic.t
+t/0901_pod.t
+t/0902_pod_coverage.t
 t/mock_lib/DBI.pm
 t/mock_lib/DBI/Mock/dbh.pm
 t/mock_lib/DBI/Mock/sth.pm
-lib/DBIx/Wrapper/VerySimple.pm
-META.yml                                 Module meta-data (added by MakeMaker)

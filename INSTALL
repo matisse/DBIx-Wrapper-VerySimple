@@ -1,0 +1,11 @@
+$Header: $
+
+# Unix or Cygwin
+perl Makefile.PL
+make
+make test
+make install
+
+# Windows
+# If you don't have  'make'  try   nmake
+

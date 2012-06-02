@@ -1,4 +1,6 @@
 Makefile
 blib/*
 .cvsignore
-CVS/*
+.git/*
+.project
+DBIx-Wrapper-VerySimple-*
